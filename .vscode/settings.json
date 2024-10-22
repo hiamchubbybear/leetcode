@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "*.java": "java",
+        "istream": "cpp",
+        "__tree": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
