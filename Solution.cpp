@@ -1,3 +1,4 @@
+#include <charconv>
 #include <cstddef>
 #include <iostream>
 #include <algorithm>
@@ -12,24 +13,30 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         size_t size=  s.size() ;
-        int ans= 0;
-        int length;
+        if(size ==1) return 1;
+        int ans =1;
         std::set<char> charSet;
-        for(int i = 0 ; i  < size ; i++) {
-            if( !charSet.count(s[i]))  {
-                charSet.insert(s[i]);
-                length++;
-            } else {
-                charSet.clear();
-                length=1;
-                charSet.insert(s[i]);
-            }
-            if(length > ans ) {
-                ans=length;
-}
+        std::queue<char> charQueue;
+        charSet.insert(s[0]);
+        charQueue.push(s[0]);
+        for (int i = 1 ; i<  size ; i++ ) {
+        if(!charSet.count(s[i]) ) {
+            charQueue.push(s[i]);
+            charSet.insert(s[i]);
+        }else  {
+          if (charQueue.size() > ans) ans = charQueue.size();
+                  while (!charQueue.empty() && charQueue.front() != s[i]) {
+                      charSet.erase(charQueue.front());
+                      charQueue.pop();
+                  }
+                  if (!charQueue.empty()) charQueue.pop();
+                  charQueue.push(s[i]);
+          }
         }
+
         return ans;
-     }
+
+    }
 };
 int main()
 {
