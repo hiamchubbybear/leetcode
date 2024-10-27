@@ -1,28 +1,40 @@
+#include <cstddef>
 #include <iostream>
 #include <algorithm>
 #include <set>
 #include <map>
+#include <stack>
 #include <string>
+#include <unordered_map>
+#include <vector>
 using namespace std;
 class Solution {
 public:
-    int lengthOfLastWord(string s) {
-       size_t lpos  = s.find_last_not_of(" ");
-        if (lpos == std::string::npos) return 0;
-        std::string temp = s.substr(0,lpos);
-        size_t spos  = temp.find_last_of(" ");
-        cout<<temp;
-        if (spos == std::string::npos) {
-            return temp.length();
-        } else {
-            return temp.length() - spos - 1;
+    int lengthOfLongestSubstring(string s) {
+        size_t size=  s.size() ;
+        int ans= 0;
+        int length;
+        std::set<char> charSet;
+        for(int i = 0 ; i  < size ; i++) {
+            if( !charSet.count(s[i]))  {
+                charSet.insert(s[i]);
+                length++;
+            } else {
+                charSet.clear();
+                length=1;
+                charSet.insert(s[i]);
+            }
+            if(length > ans ) {
+                ans=length;
+}
         }
-    }
+        return ans;
+     }
 };
-
 int main()
 {
     Solution p;
-    cout << p.lengthOfLastWord("a ");
-    return 0;
+    string s; cin>>s;
+    cout<<p.lengthOfLongestSubstring(s);
+    // return 0;
 }
