@@ -11,8 +11,7 @@ public:
       else  std::reverse(snum.begin(),snum.end());
       size_t tize = snum.find_last_not_of('0');
       snum.substr(0,tize);
-      long long ans = std::stoll(snum);
-      if(ans > INT32_MAX ||ans < INT32_MIN ) return 0;
-      return ans;
+      if(std::stoll(snum) > INT32_MAX ||std::stoll(snum) < INT32_MIN ) return 0;
+      return std::stoll(snum);
     }
 };
