@@ -3,6 +3,7 @@
 #include <string>
 #include <unordered_map>
 using namespace std;
+// Beat 100%
 class Solution {
 public:
     bool rotateString(string s, string goal) {
