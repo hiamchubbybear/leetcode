@@ -1,7 +1,6 @@
 #include<iostream>
-using namespace std;
+#include<bitset>
  int main() {
-    bitset<13> bits;
-    cout<<bits;
-    return 0;
+    std::cout<<__builtin_log2(123);
+   return 0;
  }
